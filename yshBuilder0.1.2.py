@@ -30,7 +30,7 @@ if input(f"""
   This will install:
     {color("~/yshrun.py\n    ~/ysh/yshrun.py\n  Functions\n   os.ysh_run(): run manually with os", Fore.MAGENTA, Style.BRIGHT)}
   And setup your command: `ysh_run` and `yshOSbuild` will be runned as:
-    {color("`/usr/local/bin/python3.12 /usr/local/bin/ysh_run\n    /usr/local/bin/python3.12 /usr/local/bin/yshOSbuild.py`", Fore.LIGHTGREEN_EX, Style.BRIGHT)}
+    {color("`/usr/local/bin/python3.12 /usr/local/bin/ysh_run`\n    `/usr/local/bin/python3.12 /usr/local/bin/yshOSbuild.py`", Fore.LIGHTGREEN_EX, Style.BRIGHT)}
   
   Build is stable at: Python 3.12.4 (64-bit build).
   This process may be unbuildable if you are running this program in unsupported version.
@@ -72,7 +72,7 @@ def installGit(processID: int):
 for i in tqdm.tqdm(range(1, 5), desc="Building YSH"):
   installGit(i)
 
-print("Building complete!")
+print("Building complete!\n\nFinalizing your YSH continue...")
 if input("Do you want to continue to YSH immediately? (Return/Enter: YES or any key to NO): ") == "":
   os.system("ysh_run")
 else:
