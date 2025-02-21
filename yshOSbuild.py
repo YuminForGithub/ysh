@@ -2,7 +2,7 @@ code = """\
 import os
 
 def ysh_run():
-    print("Hello from my function!")
+    os.system("ysh_run")
 
 # Add the function to the os module
 os.run_ysh = ysh_run
