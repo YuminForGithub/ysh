@@ -29,19 +29,21 @@ if input(f"""
 if input(f"""
   This will install:
     {color("~/yshrun.py\n    ~/ysh/yshrun.py\n  Functions\n   os.ysh_run(): run manually with os", Fore.MAGENTA, Style.BRIGHT)}
-  And setup your command: `ysh_run` will be runned as:
-    {color("`/usr/local/bin/python3.12 /usr/local/bin/ysh_run`", Fore.LIGHTGREEN_EX, Style.BRIGHT)}
+  And setup your command: `ysh_run` and `yshOSbuild` will be runned as:
+    {color("`/usr/local/bin/python3.12 /usr/local/bin/ysh_run\n    /usr/local/bin/python3.12 /usr/local/bin/yshOSbuild.py`", Fore.LIGHTGREEN_EX, Style.BRIGHT)}
   
   Build is stable at: Python 3.12.4 (64-bit build).
   This process may be unbuildable if you are running this program in unsupported version.
   
   This process will needed a git installation: by needed to do following steps:
     Clone: https://github.com/YuminForGithub/ysh.git
+    Download the file: yshrun.py and yshOSbuild.py
     Run following command: `git clone https://github.com/YuminForGithub/ysh.git`
   
   Please upgrade your git to very last released version, Or use the auto-update installation steps at the git.
   
-  [This process is stable version of release at the version of 0.1 currently.]
+  [This process is stable version of release at the version of 0.1.1 currently.]
+  [The very last ysh global release(git) is [V0.1 Git-Global-Release] currently.]
   The needed fixed requirations will be responded at following e-mail: cuteyumin1004@gmail.com
   If you want to know more about this process deeper, please visit: https://github.com/YuminForGithub/ysh/ and see following file:
     README.md
@@ -59,11 +61,15 @@ def installGit(processID: int):
   elif processID == 2:
     os.system("cp ~/ysh/yshrun.py ~/")
   elif processID == 3:
+    os.system("cp ~/ysh/yshOSbuild.py ~/")
+  elif processID == 4:
     os.system("chmod +x ~/yshrun.py && mv ~/yshrun.py \"/usr/local/bin/python3.12 /usr/local/bin/ysh_run\"")
+  elif processID == 5:
+    os.system("chmod +x ~/yshrun.py && mv ~/yshOSbuild.py \"/usr/local/bin/python3.12 /usr/local/bin/yshOSbuild\"")
   else:
     raise ValueError("Not valid proccess ID!")
 
-for i in tqdm.tqdm(range(1, 3), desc="Building YSH"):
+for i in tqdm.tqdm(range(1, 5), desc="Building YSH"):
   installGit(i)
 
 print("Building complete!")
