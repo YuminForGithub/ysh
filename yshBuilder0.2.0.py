@@ -66,15 +66,22 @@ def installGit(processID: int):
     os.system("chmod +x ~/yshrun.py && mv ~/yshrun.py \"/usr/local/bin/python3.12 /usr/local/bin/ysh_run\"")
   elif processID == 5:
     os.system("chmod +x ~/yshrun.py && mv ~/yshOSbuild.py \"/usr/local/bin/python3.12 /usr/local/bin/yshOSbuild\"")
+  elif processID == 6:
+    os.system("alias ysh_run_bin=\"/usr/local/bin/python3.12 /usr/local/bin/ysh_run\"")
+  elif processID == 7:
+    os.system("alias ysh_run=\"usr/local/bin/python3.12 ~/yshrun.py\"")
   else:
     raise ValueError("Not valid proccess ID!")
 
-for i in tqdm.tqdm(range(1, 5), desc="Building YSH"):
+for i in tqdm.tqdm(range(1, 7), desc="Building YSH"):
   installGit(i)
 
 print("Building complete!\n\nFinalizing your YSH continue...")
+if input("Give the YSH the administrator access? (Return/Enter: YES or any key to NO):") == "":
+  print("[!] This may administrator password to nessecarily inputted.")
+  os.system("sudo spctl --master-disable")
 if input("Do you want to continue to YSH immediately? (Return/Enter: YES or any key to NO): ") == "":
-  os.system("ysh_run")
+  os.system("/usr/local/bin/python3.12 ~/yshOSbuild.py && /usr/local/bin/python3.12 ~/yshrun.py")
 else:
   print("You can run ysh manually with: `ysh_run` command.")
   
